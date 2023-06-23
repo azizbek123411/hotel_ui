@@ -46,9 +46,9 @@ class _BookingPageState extends State<BookingPage> {
           height: double.infinity,
           width: double.infinity,
           child: GridView.count(
-            childAspectRatio: 250 / 300,
+            childAspectRatio: 219 / 340,
             crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
+            mainAxisSpacing: 16,
             crossAxisCount: 2,
             children: [
               _bookingHotel("assets/images/other_images/hotel4.jpeg",
@@ -93,9 +93,11 @@ class _BookingPageState extends State<BookingPage> {
   }
 
   Widget _bookingHotel(image, name, price) {
+    double _height = MediaQuery.of(context).size.height;
+    double _width = MediaQuery.of(context).size.width;
     return Container(
-      height: 300,
-      width: 100,
+      height: _height*0.3,
+      width: _width*0.1,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),

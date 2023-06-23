@@ -32,8 +32,11 @@ class _IntroPageState extends State<IntroPage> {
 
   @override
   Widget build(BuildContext context) {
+    double _height = MediaQuery.of(context).size.height;
+    double _width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Stack(
+        alignment: Alignment.center,
         children: [
           PageView(
             onPageChanged: (int index) {
@@ -44,8 +47,8 @@ class _IntroPageState extends State<IntroPage> {
             controller: _pageController,
             children: [
               Container(
-                height: double.infinity,
-                width: double.infinity,
+                height: _height,
+                width: _width,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage(
@@ -58,7 +61,7 @@ class _IntroPageState extends State<IntroPage> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Container(
-                        margin: const EdgeInsets.only(right: 150),
+                        margin: EdgeInsets.only(right: _width * 0.37),
                         child: const Text(
                           "Welcome to",
                           style: TextStyle(
@@ -68,12 +71,12 @@ class _IntroPageState extends State<IntroPage> {
                         ),
                       ),
                       Container(
-                        margin: const EdgeInsets.only(right: 190),
+                        margin: EdgeInsets.only(right: _width * 0.46),
                         child: const Text(
                           "Bolu",
                           style: TextStyle(
                               fontWeight: FontWeight.w700,
-                              fontSize: 96,
+                              fontSize: 85,
                               color: Colors.green),
                         ),
                       ),
@@ -117,20 +120,22 @@ class _IntroPageState extends State<IntroPage> {
   }
 
   Widget pages({image, content, title, bool isActive = true}) {
+    double _height = MediaQuery.of(context).size.height;
+    double _width = MediaQuery.of(context).size.width;
     return SizedBox(
-      width: double.infinity,
-      height: double.infinity,
+      height: _height,
+      width: _width,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image(
             image: AssetImage(image),
-            height: 425,
+            height: _height * 0.5,
             width: double.infinity,
             fit: BoxFit.cover,
           ),
-          const SizedBox(
-            height: 20,
+          SizedBox(
+            height: _height * 0.01,
           ),
           Container(
             margin: const EdgeInsets.all(27),
@@ -144,7 +149,7 @@ class _IntroPageState extends State<IntroPage> {
             ),
           ),
           Container(
-            margin: EdgeInsets.all(20),
+            margin: const EdgeInsets.all(20),
             child: Text(
               content,
               textAlign: TextAlign.center,
@@ -155,7 +160,7 @@ class _IntroPageState extends State<IntroPage> {
             ),
           ),
           Container(
-            margin: const EdgeInsets.only(bottom: 20),
+            margin: EdgeInsets.only(bottom: _height * 0.02),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: buildIndicator(),
@@ -166,11 +171,21 @@ class _IntroPageState extends State<IntroPage> {
               color: Colors.green,
               borderRadius: BorderRadius.circular(20),
             ),
-            height: 40,
-            width: 320,
+            height: _height * 0.06,
+            width: _width * 0.9,
             child: TextButton(
                 onPressed: () {
-                  Navigator.pushReplacementNamed(context,BottomNavBar.id);
+                  setState(() {
+                    if (currentIndex == 0) {
+                      _pageController.jumpToPage(1);
+                    } else if (currentIndex == 1) {
+                      _pageController.jumpToPage(2);
+                    } else if (currentIndex == 2) {
+                      _pageController.jumpToPage(3);
+                    } else if (currentIndex == 3) {
+                      Navigator.pushReplacementNamed(context, BottomNavBar.id);
+                    }
+                  });
                 },
                 child: currentIndex == 3
                     ? const Text("Home",
@@ -178,26 +193,31 @@ class _IntroPageState extends State<IntroPage> {
                     : const Text("Next",
                         style: TextStyle(fontSize: 20, color: Colors.white))),
           ),
-          const SizedBox(
-            height: 10,
+          SizedBox(
+            height: _height * 0.01,
           ),
           Container(
-            height: 40,
-            width: 320,
+            height: _height * 0.06,
+            width: _width * 0.9,
             decoration: BoxDecoration(
-              color: currentIndex==3?Colors.transparent:Colors.green.shade50,
+              color:
+                  currentIndex == 3 ? Colors.transparent : Colors.green.shade50,
               borderRadius: BorderRadius.circular(20),
             ),
             child: TextButton(
-              onPressed: () {},
-              child: currentIndex==3? const Text(
-                "Skip",
-                style: TextStyle(color: Colors.transparent, fontSize: 20),
-              ):const Text(
-                "Skip",
-                style: TextStyle(color: Colors.green, fontSize: 20),
-              )
-            ),
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, BottomNavBar.id);
+                },
+                child: currentIndex == 3
+                    ? const Text(
+                        "Skip",
+                        style:
+                            TextStyle(color: Colors.transparent, fontSize: 20),
+                      )
+                    : const Text(
+                        "Skip",
+                        style: TextStyle(color: Colors.green, fontSize: 20),
+                      )),
           )
         ],
       ),

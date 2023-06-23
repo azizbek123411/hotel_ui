@@ -23,12 +23,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    double _height = MediaQuery.of(context).size.height;
+    double _width = MediaQuery.of(context).size.width;
     return DefaultTabController(
       length: 4,
       child: Scaffold(
         backgroundColor: Colors.green.shade50,
         appBar: AppBar(
-          backgroundColor: Colors.white30,
+          backgroundColor: Colors.green.shade50,
           elevation: 0,
           title: const Text(
             "Bolu",
@@ -54,613 +56,321 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             )
           ],
         ),
-        body: TabBarView(children: [
-          SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(10),
-              child: Column(
-                children: [
-                  Row(
-                    children: const [
-                      Text(
-                        "Hello ,Kezia",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w700, fontSize: 32),
-                      )
-                    ],
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: Column(
+              children: [
+                Row(
+                  children: const [
+                    Text(
+                      "Hello ,Kezia",
+                      style:
+                          TextStyle(fontWeight: FontWeight.w700, fontSize: 32),
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: _height * 0.063,
+                  width: _width * 0.978,
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade300,
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    height: 54,
-                    width: 389,
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade300,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: const TextField(
-                      decoration: InputDecoration(
-                        contentPadding: EdgeInsets.only(top: 16),
-                        suffixIcon: Icon(
-                          IconlyBold.filter,
-                          color: Colors.green,
-                        ),
-                        border: InputBorder.none,
-                        hintText: "Search",
-                        prefixIcon: Icon(IconlyBold.search),
+                  child: const TextField(
+                    decoration: InputDecoration(
+                      contentPadding: EdgeInsets.only(top: 16),
+                      suffixIcon: Icon(
+                        IconlyBold.filter,
+                        color: Colors.green,
                       ),
+                      border: InputBorder.none,
+                      hintText: "Search",
+                      prefixIcon: Icon(IconlyBold.search),
                     ),
                   ),
-                  const SizedBox(
-                    height: 25,
-                  ),
-                  TabBar(
-                      physics: const BouncingScrollPhysics(),
-                      isScrollable: true,
-                      splashBorderRadius: BorderRadius.circular(10),
-                      indicator: BoxDecoration(
-                          border: Border.all(color: Colors.green),
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.green),
-                      enableFeedback: true,
-                      indicatorColor: Colors.green,
-                      unselectedLabelColor: Colors.green,
-                      labelStyle: const TextStyle(
-                          fontSize: 16, fontWeight: FontWeight.w600),
-                      tabs: const [
-                        Tab(
-                          text: "All hotels",
-                        ),
-                        Tab(
-                          text: "Recommended",
-                        ),
-                        Tab(
-                          text: "Trending",
-                        ),
-                        Tab(
-                          text: "Popular",
-                        )
-                      ]),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  SizedBox(
-                    height: 450,
-                    width: double.infinity,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: [
-                        hotel(
-                            "assets/images/other_images/hotel1.jpeg",
-                            "Intercontinental Hotel",
-                            "logos,Nigeria",
-                            "\$205/night"),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        hotel(
-                            "assets/images/other_images/hotel1.jpeg",
-                            "Intercontinental Hotel",
-                            "logos,Nigeria",
-                            "\$205/night"),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        hotel(
-                            "assets/images/other_images/hotel1.jpeg",
-                            "Intercontinental Hotel",
-                            "logos,Nigeria",
-                            "\$205/night"),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        hotel(
-                            "assets/images/other_images/hotel1.jpeg",
-                            "Intercontinental Hotel",
-                            "logos,Nigeria",
-                            "\$205/night"),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        hotel(
-                            "assets/images/other_images/hotel1.jpeg",
-                            "Intercontinental Hotel",
-                            "logos,Nigeria",
-                            "\$205/night"),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                ),
+                SizedBox(
+                  height: _height * 0.02,
+                ),
+                TabBar(
+                    physics: const BouncingScrollPhysics(),
+                    isScrollable: true,
+                    splashBorderRadius: BorderRadius.circular(10),
+                    indicator: BoxDecoration(
+                        border: Border.all(color: Colors.green),
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.green),
+                    // enableFeedback: true,
+                    indicatorColor: Colors.green,
+                    unselectedLabelColor: Colors.green,
+                    labelStyle: const TextStyle(
+                        fontSize: 16, fontWeight: FontWeight.w600),
+                    tabs: const [
+                      Tab(
+                        text: "All hotels",
+                      ),
+                      Tab(
+                        text: "Recommended",
+                      ),
+                      Tab(
+                        text: "Trending",
+                      ),
+                      Tab(
+                        text: "Popular",
+                      )
+                    ]),
+                const SizedBox(
+                  height: 15,
+                ),
+
+                SizedBox(
+
+                  height: _height*0.53,
+                  child: TabBarView(
                     children: [
-                      const Text(
-                        "Recently Booked",
-                        style: TextStyle(
-                            fontSize: 23, fontWeight: FontWeight.w600),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pushReplacementNamed(
-                              context, SeeAllPage.id);
-                        },
-                        child: const Text(
-                          "See all",
-                          style: TextStyle(
-                              fontSize: 23,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.green),
+                      SizedBox(
+                        height: _height * 0.5,
+                        width: double.infinity,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: [
+                            hotel(
+                                "assets/images/other_images/hotel1.jpeg",
+                                "Intercontinental Hotel",
+                                "logos,Nigeria",
+                                "\$205/night"),
+                            SizedBox(
+                              width: _width * 0.04,
+                            ),
+                            hotel(
+                                "assets/images/other_images/hotel1.jpeg",
+                                "Intercontinental Hotel",
+                                "logos,Nigeria",
+                                "\$205/night"),
+                            SizedBox(
+                              width: _width * 0.04,
+                            ),
+                            hotel(
+                                "assets/images/other_images/hotel1.jpeg",
+                                "Intercontinental Hotel",
+                                "logos,Nigeria",
+                                "\$205/night"),
+                            SizedBox(
+                              width: _width * 0.04,
+                            ),
+                            hotel(
+                                "assets/images/other_images/hotel1.jpeg",
+                                "Intercontinental Hotel",
+                                "logos,Nigeria",
+                                "\$205/night"),
+                            SizedBox(
+                              width: _width * 0.04,
+                            ),
+                            hotel(
+                                "assets/images/other_images/hotel1.jpeg",
+                                "Intercontinental Hotel",
+                                "logos,Nigeria",
+                                "\$205/night"),
+                            SizedBox(
+                              width: _width * 0.04,
+                            ),
+                          ],
                         ),
-                      )
+                      ),
+                      SizedBox(
+                        height: _height * 0.5,
+                        width: double.infinity,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: [
+                            hotel(
+                                "assets/images/other_images/hotel2.jpeg",
+                                "Intercontinental Hotel",
+                                "logos,Nigeria",
+                                "\$205/night"),
+                            SizedBox(
+                              width: _width * 0.04,
+                            ),
+                            hotel(
+                                "assets/images/other_images/hotel2.jpeg",
+                                "Intercontinental Hotel",
+                                "logos,Nigeria",
+                                "\$205/night"),
+                            SizedBox(
+                              width: _width * 0.04,
+                            ),
+                            hotel(
+                                "assets/images/other_images/hotel2.jpeg",
+                                "Intercontinental Hotel",
+                                "logos,Nigeria",
+                                "\$205/night"),
+                            SizedBox(
+                              width: _width * 0.04,
+                            ),
+                            hotel(
+                                "assets/images/other_images/hotel2.jpeg",
+                                "Intercontinental Hotel",
+                                "logos,Nigeria",
+                                "\$205/night"),
+                            SizedBox(
+                              width: _width * 0.04,
+                            ),
+                            hotel(
+                                "assets/images/other_images/hotel2.jpeg",
+                                "Intercontinental Hotel",
+                                "logos,Nigeria",
+                                "\$205/night"),
+                            SizedBox(
+                              width: _width * 0.04,
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: _height * 0.5,
+                        width: double.infinity,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: [
+                            hotel(
+                                "assets/images/other_images/hotel3.jpeg",
+                                "Intercontinental Hotel",
+                                "logos,Nigeria",
+                                "\$205/night"),
+                            SizedBox(
+                              width: _width * 0.04,
+                            ),
+                            hotel(
+                                "assets/images/other_images/hotel3.jpeg",
+                                "Intercontinental Hotel",
+                                "logos,Nigeria",
+                                "\$205/night"),
+                            SizedBox(
+                              width: _width * 0.04,
+                            ),
+                            hotel(
+                                "assets/images/other_images/hotel3.jpeg",
+                                "Intercontinental Hotel",
+                                "logos,Nigeria",
+                                "\$205/night"),
+                            SizedBox(
+                              width: _width * 0.04,
+                            ),
+                            hotel(
+                                "assets/images/other_images/hotel3.jpeg",
+                                "Intercontinental Hotel",
+                                "logos,Nigeria",
+                                "\$205/night"),
+                            SizedBox(
+                              width: _width * 0.04,
+                            ),
+                            hotel(
+                                "assets/images/other_images/hotel3.jpeg",
+                                "Intercontinental Hotel",
+                                "logos,Nigeria",
+                                "\$205/night"),
+                            SizedBox(
+                              width: _width * 0.04,
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: _height * 0.5,
+                        width: double.infinity,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: [
+                            hotel(
+                                "assets/images/other_images/hotel4.jpeg",
+                                "Intercontinental Hotel",
+                                "logos,Nigeria",
+                                "\$205/night"),
+                            SizedBox(
+                              width: _width * 0.04,
+                            ),
+                            hotel(
+                                "assets/images/other_images/hotel4.jpeg",
+                                "Intercontinental Hotel",
+                                "logos,Nigeria",
+                                "\$205/night"),
+                            SizedBox(
+                              width: _width * 0.04,
+                            ),
+                            hotel(
+                                "assets/images/other_images/hotel4.jpeg",
+                                "Intercontinental Hotel",
+                                "logos,Nigeria",
+                                "\$205/night"),
+                            SizedBox(
+                              width: _width * 0.04,
+                            ),
+                            hotel(
+                                "assets/images/other_images/hotel4.jpeg",
+                                "Intercontinental Hotel",
+                                "logos,Nigeria",
+                                "\$205/night"),
+                            SizedBox(
+                              width: _width * 0.04,
+                            ),
+                            hotel(
+                                "assets/images/other_images/hotel4.jpeg",
+                                "Intercontinental Hotel",
+                                "logos,Nigeria",
+                                "\$205/night"),
+                            SizedBox(
+                              width: _width * 0.04,
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
-                  )
-                ],
-              ),
+                  ),
+                ),
+                SizedBox(
+                  width: _width * 0.043,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      "Recently Booked",
+                      style:
+                          TextStyle(fontSize: 23, fontWeight: FontWeight.w600),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(context, SeeAllPage.id);
+                      },
+                      child: const Text(
+                        "See all",
+                        style: TextStyle(
+                            fontSize: 23,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.green),
+                      ),
+                    )
+                  ],
+                )
+              ],
             ),
           ),
-          SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(10),
-              child: Column(
-                children: [
-                  Row(
-                    children: const [
-                      Text(
-                        "Hello ,Kezia",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w700, fontSize: 32),
-                      )
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    height: 54,
-                    width: 389,
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade300,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: const TextField(
-                      decoration: InputDecoration(
-                        contentPadding: EdgeInsets.only(top: 16),
-                        suffixIcon: Icon(
-                          IconlyBold.filter,
-                          color: Colors.green,
-                        ),
-                        border: InputBorder.none,
-                        hintText: "Search",
-                        prefixIcon: Icon(IconlyBold.search),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 25,
-                  ),
-                  TabBar(
-                      physics: const BouncingScrollPhysics(),
-                      isScrollable: true,
-                      splashBorderRadius: BorderRadius.circular(10),
-                      indicator: BoxDecoration(
-                          border: Border.all(color: Colors.green),
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.green),
-                      enableFeedback: true,
-                      indicatorColor: Colors.green,
-                      unselectedLabelColor: Colors.green,
-                      labelStyle: const TextStyle(
-                          fontSize: 16, fontWeight: FontWeight.w600),
-                      tabs: const [
-                        Tab(
-                          text: "All hotels",
-                        ),
-                        Tab(
-                          text: "Recommended",
-                        ),
-                        Tab(
-                          text: "Trending",
-                        ),
-                        Tab(
-                          text: "Popular",
-                        )
-                      ]),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  SizedBox(
-                    height: 450,
-                    width: double.infinity,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: [
-                        hotel(
-                            "assets/images/other_images/hotel2.jpeg",
-                            "Intercontinental Hotel",
-                            "logos,Nigeria",
-                            "\$205/night"),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        hotel(
-                            "assets/images/other_images/hotel2.jpeg",
-                            "Intercontinental Hotel",
-                            "logos,Nigeria",
-                            "\$205/night"),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        hotel(
-                            "assets/images/other_images/hotel2.jpeg",
-                            "Intercontinental Hotel",
-                            "logos,Nigeria",
-                            "\$205/night"),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        hotel(
-                            "assets/images/other_images/hotel2.jpeg",
-                            "Intercontinental Hotel",
-                            "logos,Nigeria",
-                            "\$205/night"),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        hotel(
-                            "assets/images/other_images/hotel2.jpeg",
-                            "Intercontinental Hotel",
-                            "logos,Nigeria",
-                            "\$205/night"),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        "Recently Booked",
-                        style: TextStyle(
-                            fontSize: 23, fontWeight: FontWeight.w600),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pushReplacementNamed(
-                              context, SeeAllPage.id);
-                        },
-                        child: const Text(
-                          "See all",
-                          style: TextStyle(
-                              fontSize: 23,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.green),
-                        ),
-                      )
-                    ],
-                  )
-                ],
-              ),
-            ),
-          ),
-          SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(10),
-              child: Column(
-                children: [
-                  Row(
-                    children: const [
-                      Text(
-                        "Hello ,Kezia",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w700, fontSize: 32),
-                      )
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    height: 54,
-                    width: 389,
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade300,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: const TextField(
-                      decoration: InputDecoration(
-                        contentPadding: EdgeInsets.only(top: 16),
-                        suffixIcon: Icon(
-                          IconlyBold.filter,
-                          color: Colors.green,
-                        ),
-                        border: InputBorder.none,
-                        hintText: "Search",
-                        prefixIcon: Icon(IconlyBold.search),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 25,
-                  ),
-                  TabBar(
-                      physics: const BouncingScrollPhysics(),
-                      isScrollable: true,
-                      splashBorderRadius: BorderRadius.circular(10),
-                      indicator: BoxDecoration(
-                          border: Border.all(color: Colors.green),
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.green),
-                      enableFeedback: true,
-                      indicatorColor: Colors.green,
-                      unselectedLabelColor: Colors.green,
-                      labelStyle: const TextStyle(
-                          fontSize: 16, fontWeight: FontWeight.w600),
-                      tabs: const [
-                        Tab(
-                          text: "All hotels",
-                        ),
-                        Tab(
-                          text: "Recommended",
-                        ),
-                        Tab(
-                          text: "Trending",
-                        ),
-                        Tab(
-                          text: "Popular",
-                        )
-                      ]),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  SizedBox(
-                    height: 450,
-                    width: double.infinity,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: [
-                        hotel(
-                            "assets/images/other_images/hotel3.jpeg",
-                            "Intercontinental Hotel",
-                            "logos,Nigeria",
-                            "\$205/night"),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        hotel(
-                            "assets/images/other_images/hotel3.jpeg",
-                            "Intercontinental Hotel",
-                            "logos,Nigeria",
-                            "\$205/night"),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        hotel(
-                            "assets/images/other_images/hotel3.jpeg",
-                            "Intercontinental Hotel",
-                            "logos,Nigeria",
-                            "\$205/night"),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        hotel(
-                            "assets/images/other_images/hotel3.jpeg",
-                            "Intercontinental Hotel",
-                            "logos,Nigeria",
-                            "\$205/night"),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        hotel(
-                            "assets/images/other_images/hotel3.jpeg",
-                            "Intercontinental Hotel",
-                            "logos,Nigeria",
-                            "\$205/night"),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        "Recently Booked",
-                        style: TextStyle(
-                            fontSize: 23, fontWeight: FontWeight.w600),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pushReplacementNamed(
-                              context, SeeAllPage.id);
-                        },
-                        child: const Text(
-                          "See all",
-                          style: TextStyle(
-                              fontSize: 23,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.green),
-                        ),
-                      )
-                    ],
-                  )
-                ],
-              ),
-            ),
-          ),
-          SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(10),
-              child: Column(
-                children: [
-                  Row(
-                    children: const [
-                      Text(
-                        "Hello ,Kezia",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w700, fontSize: 32),
-                      )
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    height: 54,
-                    width: 389,
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade300,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: const TextField(
-                      decoration: InputDecoration(
-                        contentPadding: EdgeInsets.only(top: 16),
-                        suffixIcon: Icon(
-                          IconlyBold.filter,
-                          color: Colors.green,
-                        ),
-                        border: InputBorder.none,
-                        hintText: "Search",
-                        prefixIcon: Icon(IconlyBold.search),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 25,
-                  ),
-                  TabBar(
-                      physics: const BouncingScrollPhysics(),
-                      isScrollable: true,
-                      splashBorderRadius: BorderRadius.circular(10),
-                      indicator: BoxDecoration(
-                          border: Border.all(color: Colors.green),
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.green),
-                      enableFeedback: true,
-                      indicatorColor: Colors.green,
-                      unselectedLabelColor: Colors.green,
-                      labelStyle: const TextStyle(
-                          fontSize: 16, fontWeight: FontWeight.w600),
-                      tabs: const [
-                        Tab(
-                          text: "All hotels",
-                        ),
-                        Tab(
-                          text: "Recommended",
-                        ),
-                        Tab(
-                          text: "Trending",
-                        ),
-                        Tab(
-                          text: "Popular",
-                        )
-                      ]),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  SizedBox(
-                    height: 450,
-                    width: double.infinity,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: [
-                        hotel(
-                            "assets/images/other_images/hotel4.jpeg",
-                            "Intercontinental Hotel",
-                            "logos,Nigeria",
-                            "\$205/night"),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        hotel(
-                            "assets/images/other_images/hotel4.jpeg",
-                            "Intercontinental Hotel",
-                            "logos,Nigeria",
-                            "\$205/night"),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        hotel(
-                            "assets/images/other_images/hotel4.jpeg",
-                            "Intercontinental Hotel",
-                            "logos,Nigeria",
-                            "\$205/night"),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        hotel(
-                            "assets/images/other_images/hotel4.jpeg",
-                            "Intercontinental Hotel",
-                            "logos,Nigeria",
-                            "\$205/night"),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        hotel(
-                            "assets/images/other_images/hotel4.jpeg",
-                            "Intercontinental Hotel",
-                            "logos,Nigeria",
-                            "\$205/night"),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        "Recently Booked",
-                        style: TextStyle(
-                            fontSize: 23, fontWeight: FontWeight.w600),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pushReplacementNamed(
-                              context, SeeAllPage.id);
-                        },
-                        child: const Text(
-                          "See all",
-                          style: TextStyle(
-                              fontSize: 23,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.green),
-                        ),
-                      )
-                    ],
-                  )
-                ],
-              ),
-            ),
-          ),
-        ]),
+        ),
       ),
     );
   }
 
   Widget hotel(image, name, location, price) {
+    double _height = MediaQuery.of(context).size.height;
+    double _width = MediaQuery.of(context).size.width;
     return Stack(children: [
       Container(
-        width: 300,
-        height: 500,
+        width: _width * 0.74,
+        height: _height * 0.6,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30),
             image:
@@ -668,7 +378,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       ),
       Container(
         padding: const EdgeInsets.all(13),
-        margin: const EdgeInsets.only(bottom: 15),
+        margin: EdgeInsets.only(bottom: _height * 0.01),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -717,7 +427,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       ),
       Container(
         padding: const EdgeInsets.only(left: 10),
-        margin: const EdgeInsets.only(left: 200, top: 50),
+        margin: EdgeInsets.only(left: _width * 0.5, top: _height * 0.05),
         height: 34,
         width: 80,
         decoration: BoxDecoration(
@@ -747,10 +457,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   }
 
   Widget _tabsview(image, name, location, price) {
+    double _height = MediaQuery.of(context).size.height;
+    double _width = MediaQuery.of(context).size.width;
     return Stack(children: [
       Container(
-        width: 300,
-        height: 500,
+        width: _width * 0.2,
+        height: _height * 0.6,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30),
             image:
@@ -797,7 +509,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         ),
       ),
       Container(
-        margin: const EdgeInsets.only(left: 250, bottom: 30),
+        margin: EdgeInsets.only(left: _width * 0.3, bottom: 30),
         alignment: Alignment.bottomCenter,
         child: const Icon(
           IconlyBold.bookmark,
@@ -807,7 +519,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       ),
       Container(
         padding: const EdgeInsets.only(left: 10),
-        margin: const EdgeInsets.only(left: 200, top: 50),
+        margin: EdgeInsets.only(left: _width * 0.2, top: _height * 0.05),
         height: 34,
         width: 80,
         decoration: BoxDecoration(
